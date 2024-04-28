@@ -1,28 +1,20 @@
-.box {
+.SearchBox {
   display: flex;
-  position: relative;
-}
-
-.icon {
-  position: absolute;
-  top: 56%;
-  transform: translateY(-50%);
-  left: 10px;
-  color: #6c757d;
-}
-
-.field {
-  padding: 8px 120px 8px 34px;
+  flex-direction: column;
+  max-width: 320px;
   width: 100%;
-  border-radius: 6px;
-  border: 2px solid #dfdfdf;
-  color: #6c757d;
+  gap: 4px;
+  margin-bottom: 12px;
 }
 
-.contactCount {
-  position: absolute;
-  top: 50%;
-  right: 26px;
-  transform: translateY(-50%);
-  cursor: default;
+.searchBoxInput {
+  border-radius: 4px;
+  border: 1px solid black;
+  outline: none;
+  padding: 8px;
+}
+
+.searchBoxInput:active,
+.searchBoxInput:focus {
+  border: 1px solid blue;
 }

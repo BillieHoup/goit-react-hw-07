@@ -1,35 +1,27 @@
-import { changeFilter, selectFilters } from '../../redux/filtersSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
+import css from "./SearchBox.module.css";
+import { changeFilter, selectNameFilter } from "../../redux/filtersSlice";
 
-import { GoSearch } from 'react-icons/go';
-
-import ContactCount from '../ContactCount/ContactCount';
-
-import css from './SearchBox.module.css';
-
-export default function SearchBox() {
-  const { name } = useSelector(selectFilters);
+const SearchBox = () => {
+  const filter = useSelector(selectNameFilter);
   const dispatch = useDispatch();
-
-  const handleChangeFilter = e => {
-    dispatch(changeFilter(e.target.value));
+  const handleSearch = (ev) => {
+    dispatch(changeFilter(ev.target.value));
   };
-
   return (
-    <div className={css.box}>
-      <span className={css.icon}>
-        <GoSearch />
+    <label className={css.SearchBox}>
+      <span>
+        <b> Find contacts by name</b>
       </span>
       <input
-        className={css.field}
+        className={css.searchBoxInput}
         type="text"
-        value={name}
-        onChange={handleChangeFilter}
-        placeholder="Search for contact by last name or phone number"
+        placeholder="Search for..."
+        value={filter}
+        onChange={handleSearch}
       />
-      <div className={css.contactCount}>
-        <ContactCount />
-      </div>
-    </div>
+    </label>
   );
-}
+};
+
+export default SearchBox;
